@@ -1,0 +1,159 @@
+{
+  "main": {
+    "id": "8e3681fcbf0c3889",
+    "type": "split",
+    "children": [
+      {
+        "id": "f2a5d16c0c7a3d92",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3facb5b19a2f352a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a6bf071dea055898",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e6cf767b9854eaa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "02a11241548652e1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d14ae3c7eb21a9d8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "230ad66c6cffd9be",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "943f179423fe42c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "86f144d4dcbcd7a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9c587e8cd39b22b2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "923de03de09ef3dd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a52dde78a317dff2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c85bd3cf6b772e92",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
+    }
+  },
+  "active": "3facb5b19a2f352a",
+  "lastOpenFiles": [
+    "docs/meetup/CALIENTACABEZAS/2023-10-18.md",
+    "docs/meetup/천재인가봐/2023-10-18.md",
+    "docs/meetup/손이필요해/2023-10-26.md",
+    "docs/meetup/손이필요해/2023-10-19.md",
+    "docs/meetup/youkids/2023-10-18.md",
+    "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+    "무제 파일.md"
+  ]
+}
