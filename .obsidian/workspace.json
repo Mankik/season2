@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+                "file": "docs/meetup/손이필요해/2023-10-26.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+                "file": "docs/meetup/손이필요해/2023-10-26.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
+                "file": "docs/meetup/손이필요해/2023-10-26.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/meetup/CALIENTACABEZAS/2023-10-24.md"
+                "file": "docs/meetup/손이필요해/2023-10-26.md"
               }
             }
           }
@@ -148,12 +148,13 @@
   },
   "active": "3facb5b19a2f352a",
   "lastOpenFiles": [
+    "docs/report/손이필요해/2023-10-26_보이스피싱_단어_음성인식시스템.pdf",
+    "docs/meetup/손이필요해/2023-10-19.md",
+    "docs/meetup/손이필요해/2023-10-26.md",
+    "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
     "docs/meetup/CALIENTACABEZAS/2023-10-18.md",
     "docs/meetup/천재인가봐/2023-10-18.md",
-    "docs/meetup/손이필요해/2023-10-26.md",
-    "docs/meetup/손이필요해/2023-10-19.md",
     "docs/meetup/youkids/2023-10-18.md",
-    "docs/meetup/CALIENTACABEZAS/2023-10-24.md",
     "무제 파일.md"
   ]
 }
