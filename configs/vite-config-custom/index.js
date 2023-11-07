@@ -4,10 +4,15 @@ import { mergeConfig } from "vite";
 
 import tsconfigPaths from "vite-tsconfig-paths";
 import dts from "vite-plugin-dts";
+import vue from "@vitejs/plugin-vue";
 
 // == Main Configs ============================================================
 export function NodeConfig(viteConfigEnv, extendConfigs = {}) {
   return buildConfig(viteConfigEnv, extendConfigs, NodeBuilder);
+}
+
+export function VueConfig(viteConfigEnv, extendConfigs = {}) {
+  return buildConfig(viteConfigEnv, extendConfigs, VueBuilder);
 }
 
 function buildConfig(viteConfigEnv, extendConfigs, configBuilder) {
@@ -39,6 +44,16 @@ function NodeBuilder(viteConfigEnv) {
       },
       target: [ "es2020" ]
     },
+    plugins: plugins.build()
+  });
+  return configs;
+}
+
+function VueBuilder(viteConfigEnv) {
+  const { configs, plugins } = initCommonBuilder(viteConfigEnv);
+
+  plugins.add(vue());
+  configs.add({
     plugins: plugins.build()
   });
   return configs;

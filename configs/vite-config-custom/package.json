@@ -6,6 +6,7 @@
   "typings": "index.d.ts",
   "main": "index.js",
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.0",
     "vite-config-builder": "^0.0.2",
     "vite-plugin-dts": "^3.6.3",
     "vite-tsconfig-paths": "^4.2.1"
