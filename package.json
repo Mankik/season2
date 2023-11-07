@@ -5,11 +5,17 @@
   "packageManager": "yarn@3.6.4",
   "workspaces": [
     "apps/*",
+    "configs/*",
     "packages/*"
   ],
   "devDependencies": {
+    "@types/eslint": "^8",
     "@types/node": "^20.8.10",
     "c8": "^8.0.1",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.0.3",
     "terser": "^5.24.0",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
