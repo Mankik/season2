@@ -1,0 +1,24 @@
+name: CI
+
+# This action works with pull requests and pushes
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/node-setup
+
+      - name: Build
+        run: yarn workspaces foreach -Apt run build
+
+      - name: Lint
+        run: yarn workspaces foreach -Apt run lint
+
+      - name: Test
+        run: yarn workspaces foreach -Apt run test

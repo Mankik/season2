@@ -1,4 +1,3 @@
-
 import type { ConfigEnv } from "vite";
 import { VueConfig } from "vite-config-custom";
 

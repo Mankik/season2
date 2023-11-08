@@ -48,7 +48,8 @@ yarn test
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-yarn lint
+yarn lint # Lint only
+yarn fix  # Try to fix
 ```
 
 ## Key libraries
