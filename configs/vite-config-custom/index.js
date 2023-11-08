@@ -1,10 +1,11 @@
 import { resolve } from "path";
+import { fileURLToPath, URL } from "node:url";
 import { initConfigBuilder, ViteEnv, PluginBuilder } from "vite-config-builder";
 import { mergeConfig } from "vite";
 
-import tsconfigPaths from "vite-tsconfig-paths";
 import dts from "vite-plugin-dts";
 import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 
 // == Main Configs ============================================================
 export function NodeConfig(viteConfigEnv, extendConfigs = {}) {
@@ -22,13 +23,15 @@ function buildConfig(viteConfigEnv, extendConfigs, configBuilder) {
 }
 
 // == Main Configs ============================================================
+const rootDir = resolve(process.cwd(), "src/");
+
 function NodeBuilder(viteConfigEnv) {
   const { configs, plugins } = initCommonBuilder(viteConfigEnv);
 
   if (ViteEnv.isProd()) {
     plugins.add(
       dts({
-        entryRoot: resolve(process.cwd(), "src/"),
+        entryRoot: rootDir,
         include: ["src"]
       })
     );
@@ -53,6 +56,7 @@ function VueBuilder(viteConfigEnv) {
   const { configs, plugins } = initCommonBuilder(viteConfigEnv);
 
   plugins.add(vue());
+  plugins.add(vueJsx());
   configs.add({
     plugins: plugins.build()
   });
@@ -61,6 +65,14 @@ function VueBuilder(viteConfigEnv) {
 
 function initCommonBuilder(viteConfigEnv) {
   const configs = initConfigBuilder(viteConfigEnv);
+
+  configs.add({
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL(rootDir, import.meta.url))
+      }
+    }
+  })
 
   if (ViteEnv.isDev()) {
     configs.add({
@@ -99,7 +111,6 @@ function initCommonBuilder(viteConfigEnv) {
   }
 
   const plugins = new PluginBuilder([
-    tsconfigPaths()
   ]);
 
   return {

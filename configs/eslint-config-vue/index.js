@@ -10,7 +10,9 @@ module.exports = defineConfig({
     "@vue/eslint-config-typescript/recommended",
     "@vue/eslint-config-prettier"
   ],
-  plugins: ["vuejs-accessibility"],
+  plugins: [
+    "vuejs-accessibility"
+  ],
   env: {
     browser: true,
     es2020: true

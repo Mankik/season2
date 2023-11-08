@@ -10,3 +10,4 @@ declare function UserConfig(
 ): TOutputConfig;
 
 export type NodeConfig = typeof UserConfig;
+export type VueConfig = typeof UserConfig;
