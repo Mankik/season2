@@ -49,3 +49,53 @@
 
 이제 열렸습니다!!
 ![image](https://github.com/Mankik/season2/assets/25581533/1b897f93-12be-47c7-a9ad-6210060d2cd3)
+
+## 5. 리뷰 반영
+
+보통은 `Mankik/season2`의 `main`에 바로 합쳐지지만, 갑자기 생각난 내용이 있거나 리뷰등에 의해 추가로 변경이 필요할 수도 있습니다.
+![image](https://github.com/Mankik/season2/assets/25581533/a6e09e1f-0c1b-4e93-9ffc-3b690158f245)
+
+그럼 마찬가지로 커밋 후
+![image](https://github.com/Mankik/season2/assets/25581533/2da21684-eafd-4331-abf2-fa8e1ac4bdcc)
+
+다시 커밋을 업로드(Push)해주면 반영이 됩니다.
+![스크린샷 2023-11-13 150318](https://github.com/Mankik/season2/assets/25581533/21a15ccb-f0f7-45a7-96e6-46acdf1408b4)
+
+![image](https://github.com/Mankik/season2/assets/25581533/e4ce6bed-6d71-4bb9-993c-ffe837ed8038)
+
+그리고 병합이 되면 다음과 같이 나타납니다.  
+이제 브랜치는 계속 유지할 필요가 없으니 삭제 버튼을 눌러도 상관 없습니다.
+![image](https://github.com/Mankik/season2/assets/25581533/fe3c2b56-0bfe-4b6f-aa7d-6659c4640a32)
+
+## 6. 동기화
+병합이 된 다음 다시 복제된 본인의 레포지토리로 가보게 되면 `Mankik/season2`의 `main`보다 뒤에 있다는 메세지가 나타납니다.  
+`Mankik/season2`의 `main`에만 반영이 되었기 때문이죠.
+![스크린샷 2023-11-13 150916](https://github.com/Mankik/season2/assets/25581533/62278bdb-2bcb-4016-aa47-c6b99b7efbaf)
+
+`Sync fork`의 `Update branch`를 누르면,
+![스크린샷 2023-11-13 151308](https://github.com/Mankik/season2/assets/25581533/72d10744-8088-49bc-bb18-2a564eb2f4b7)
+
+`Mankik/season2`의 `main`과 동기화가 완료됩니다.
+![image](https://github.com/Mankik/season2/assets/25581533/63233f58-1d88-4cd0-ab12-110d20cfd312)
+
+로컬에서도 동기화를 해야겠죠?  
+브랜치 버튼을 눌러 `main`으로 가줍니다.
+![스크린샷 2023-11-13 151744](https://github.com/Mankik/season2/assets/25581533/897c36e7-720b-4e9d-bf93-6001f4c519a2)
+
+역시 예전에 생성해두었던 branch는 삭제해도 상관없어요.
+![image](https://github.com/Mankik/season2/assets/25581533/49b32207-5d57-46c5-8e16-88e054849b5d)
+![image](https://github.com/Mankik/season2/assets/25581533/cf4cb882-e7b2-4dd5-b5da-ba94525f9db4)
+
+이제 동기화 버튼을 눌러서 동기화를 체크 후,
+![스크린샷 2023-11-13 152054](https://github.com/Mankik/season2/assets/25581533/c2e5bd07-dfe1-4f2c-8729-e679d576b7ac)
+![image](https://github.com/Mankik/season2/assets/25581533/2729d9fb-58b0-471d-bdc7-35760dda7fa7)
+
+커밋 정보를 다운로드 받아 로컬에 반영합니다.
+![스크린샷 2023-11-13 152201](https://github.com/Mankik/season2/assets/25581533/a61372b1-a99a-4cc5-9f10-69c11e8b66c0)
+![image](https://github.com/Mankik/season2/assets/25581533/8500cb0b-575c-4eff-b4b6-8e5ee3528b3b)
+
+이제 히스토리에 반영된 내용이 나타납니다.
+![image](https://github.com/Mankik/season2/assets/25581533/b5546272-1a4e-4f9d-8050-361558a322a1)
+
+다시 작업을 하고 싶다면 분기를 만들고 커밋을 시작하시면 됩니다.
+![스크린샷 2023-11-13 152605](https://github.com/Mankik/season2/assets/25581533/6ae2ac5b-48f4-4894-a69f-516089c56a27)
