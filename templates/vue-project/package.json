@@ -17,6 +17,18 @@
     "coverage": "yarn g:coverage"
   },
   "prettier": "prettier-config-custom",
+  "eslintConfig": {
+    "extends": [
+      "vue"
+    ],
+    "parserOptions": {
+      "project": ["tsconfig.json", "tsconfig.node.json"]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/"
+  ],
   "dependencies": {
     "@vueuse/core": "^10.5.0",
     "pinia": "^2.1.7",

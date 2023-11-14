@@ -11,6 +11,14 @@ module.exports = defineConfig({
   plugins: [
     "vuejs-accessibility"
   ],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    EXPERIMENTAL_useProjectService: true
+  },
+  rules: {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+  },
   env: {
     browser: true,
     es2020: true

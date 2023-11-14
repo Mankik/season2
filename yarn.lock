@@ -4449,6 +4449,7 @@ __metadata:
     c8: ^8.0.1
     eslint: ^8.53.0
     eslint-config-prettier: ^9.0.0
+    eslint-config-vue: "workspace:^"
     eslint-plugin-prettier: ^5.0.1
     eslint-plugin-vue: ^9.18.1
     eslint-plugin-vuejs-accessibility: ^2.2.0
