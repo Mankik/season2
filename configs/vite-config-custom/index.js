@@ -1,4 +1,5 @@
-import { resolve } from "path";
+import { resolve, relative, dirname } from "path";
+import { cwd } from "process";
 import { fileURLToPath, URL } from "node:url";
 import { initConfigBuilder, ViteEnv, PluginBuilder } from "vite-config-builder";
 import { mergeConfig } from "vite";
@@ -23,7 +24,11 @@ function buildConfig(viteConfigEnv, extendConfigs, configBuilder) {
 }
 
 // == Main Configs ============================================================
-const rootDir = resolve(process.cwd(), "src/");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const rootDir = resolve(cwd(), "src");
+const relativeDir = relative(__dirname, rootDir);
 
 function NodeBuilder(viteConfigEnv) {
   const { configs, plugins } = initCommonBuilder(viteConfigEnv);
@@ -41,7 +46,7 @@ function NodeBuilder(viteConfigEnv) {
     build: {
       // https://vitejs.dev/guide/build.html#library-mode
       lib: {
-        entry: resolve(process.cwd(), "src/index.ts"),
+        entry: resolve(rootDir, "index.ts"),
         formats: ["es", "cjs"],
         fileName: format => (format === "es" ? "index.mjs" : "index.cjs")
       },
@@ -69,7 +74,7 @@ function initCommonBuilder(viteConfigEnv) {
   configs.add({
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL(rootDir, import.meta.url))
+        "@": fileURLToPath(new URL(relativeDir, import.meta.url))
       }
     }
   })
