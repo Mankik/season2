@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 import { obj } from "../testSample/index";
 
 defineProps<{ msg: string }>();
