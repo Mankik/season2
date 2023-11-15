@@ -1,0 +1,13 @@
+{
+  "name": "eslint-config-vue",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "eslint-config-custom": "workspace:^",
+    "eslint-define-config": "^1.24.1"
+  },
+  "peerDependencies": {
+    "eslint": "*"
+  }
+}
