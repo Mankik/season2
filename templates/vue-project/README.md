@@ -17,8 +17,8 @@ Vue 프로젝트 템플릿입니다.
 
 윈도우 유저의 경우
 1. [Node.JS](https://nodejs.org/en/download)를 설치합니다.
-2. Powershell을 관리자 권한으로 열고 [코어팩을 활성화](https://github.com/nodejs/corepack) 합니다.
-3. 정상적으로 실행되었다면 닫아주세요. (아래에 있는 명령어는 일반 권한의 Powershell을 사용하시면 됩니다) 
+2. **Powershell을 관리자 권한**으로 열고 [코어팩을 활성화](https://github.com/nodejs/corepack) 합니다.
+3. 정상적으로 실행되었다면 닫아주세요. (아래에 있는 명령어는 VS code를 열고 일반 권한의 Powershell을 사용하시면 됩니다) 
 ```
 # 관리자 모드 Powershell
 corepack enable
@@ -49,7 +49,7 @@ yarn install
 - `yarn test`: [Vitest](https://vitest.dev/)로 테스트 코드를 실행합니다
 
 ### Visual Studio 코드 사용
-본인 팀의 프로젝트를 열어주세요!! (`season2`가 아닌 `apps/팀이름`)  
+본인 팀의 프로젝트를 열어주세요!! $\color{#FF0000}\textsf{★중요!!★}$ **`season2`가 아닌 `season2/apps/팀이름`을!!**  
 여기서는 템플릿 프로젝트를 열도록 하겠습니다.
 ![스크린샷 2023-11-14 155748](https://github.com/Mankik/season2/assets/25581533/3a349cda-37d5-473f-9b62-36c70e6f1aad)
 ![스크린샷 2023-11-14 155843](https://github.com/Mankik/season2/assets/25581533/1ab08305-8900-46fb-8400-c50097c47d42)
