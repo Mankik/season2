@@ -3,6 +3,8 @@
     "Vue.volar",
     "Vue.vscode-typescript-vue-plugin",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "rvest.vs-code-prettier-eslint",
+    "esbenp.prettier-vscode",
+    "antiantisepticeye.vscode-color-picker"
   ]
 }
