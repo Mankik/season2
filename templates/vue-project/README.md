@@ -65,5 +65,9 @@ yarn install
 터미널을 열고 명령어도 실행할 수 있습니다.
 ![스크린샷 2023-11-14 170411](https://github.com/Mankik/season2/assets/25581533/65452c55-c07f-48a4-ae8c-d9d8dcc75e7b)
 
+혹시 `Cannot find module 'vue'. Did you mean to set the 'moduleResolution' option to 'node'`과 같은 문제가 뜬다면 다음 사항들을 체크해주세요.
+1. 확장기능에서 [`Vetur`](https://github.com/vuejs/vetur)는 비활성화 해주세요, [`Volar`](https://github.com/vuejs/language-tools)를 사용해야 합니다.
+2. Visual Studio 코드의 버전이 [1.77.3](https://stackoverflow.com/questions/75870063/vscode-and-typescript-5-moduleresolution-bundler) 이상인지 확인하십시오.
+
 혹시 성능에 문제가 있다면 [TypeScript and JavaScript](https://github.com/vuejs/language-tools/discussions/471#discussioncomment-1361669)를 워크스페이스에서 비활성화 해볼 수 있습니다.
 ![image](https://github.com/Mankik/season2/assets/25581533/4cc862cc-d473-45bb-a5de-4aa1bdacdf7f)
