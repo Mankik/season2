@@ -132,7 +132,6 @@ dist
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
 .DS_Store
 *.suo
 *.ntvs*
@@ -140,6 +139,45 @@ dist
 *.sln
 *.sw?
 *.pem
+
+# Java
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+**/.idea/shelf/
+**/.idea/workspace.xml
+**/.idea/httpRequests/
+**/.idea/dataSources/
+**/.idea/dataSources.local.xml
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
 # Obsidian
 .obsidian/
