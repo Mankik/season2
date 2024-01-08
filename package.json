@@ -1,0 +1,60 @@
+{
+  "name": "season2",
+  "type": "module",
+  "private": true,
+  "packageManager": "yarn@3.6.4",
+  "workspaces": [
+    "apps/*",
+    "configs/*",
+    "packages/*",
+    "templates/vue-project"
+  ],
+  "scripts": {
+    "lint:action": "yarn run -T eslint '.github/**/*.{yaml,yml}'",
+    "fix:action": "yarn lint:action --fix",
+    "g:clean": "cd $INIT_CWD && yarn run -T rimraf dist coverage tsconfig.tsbuildinfo node_modules/.vite",
+    "g:build": "cd $INIT_CWD && yarn run -T vite build",
+    "g:build-watch": "cd $INIT_CWD && yarn run build --watch",
+    "g:test": "cd $INIT_CWD && yarn run -T vitest run",
+    "g:coverage": "yarn g:test --coverage",
+    "g:lint": "cd $INIT_CWD && yarn run -T eslint . --report-unused-disable-directives --max-warnings 0 --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
+    "g:fix": "cd $INIT_CWD && yarn g:lint --fix",
+    "g:check": "cd $INIT_CWD && yarn run -T tsc --noEmit",
+    "g:app-check": "cd $INIT_CWD && yarn run -T vue-tsc --noEmit",
+    "g:app-start": "cd $INIT_CWD && yarn run -T vite",
+    "g:app-preview": "cd $INIT_CWD && yarn run -T vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "yaml"
+    ]
+  },
+  "devDependencies": {
+    "@types/eslint": "^8",
+    "@types/node": "^20.8.10",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "c8": "^8.0.1",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-vue": "workspace:^",
+    "eslint-config-yaml": "workspace:^",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-vue": "^9.18.1",
+    "eslint-plugin-vuejs-accessibility": "^2.2.0",
+    "eslint-plugin-yml": "^1.10.0",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "terser": "^5.24.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.1",
+    "vitest": "^0.34.6",
+    "vue-tsc": "^1.8.22"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2",
+    "vue": "^3.3.8"
+  }
+}
