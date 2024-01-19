@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
-    "format": "prettier --write --cache ."
+    "clean": "yarn g:clean", 
+    "start": "yarn g:app-start", 
+    "preview": "yarn g:app-preview", 
+    "build": "yarn g:build", 
+    "build:watch": "yarn g:build-watch", 
+    "lint": "yarn g:lint", 
+    "fix": "yarn g:fix", 
+    "check": "yarn g:app-check"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.34",
