@@ -1,16 +1,16 @@
 {
-  "name": "capstone-project",
+  "name": "genius",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "yarn g:clean", 
-    "start": "yarn g:app-start", 
-    "preview": "yarn g:app-preview", 
-    "build": "yarn g:build", 
-    "build:watch": "yarn g:build-watch", 
-    "lint": "yarn g:lint", 
-    "fix": "yarn g:fix", 
+    "clean": "yarn g:clean",
+    "start": "yarn g:app-start",
+    "preview": "yarn g:app-preview",
+    "build": "yarn g:build",
+    "build:watch": "yarn g:build-watch",
+    "lint": "yarn g:lint",
+    "fix": "yarn g:fix",
     "check": "yarn g:app-check"
   },
   "dependencies": {
