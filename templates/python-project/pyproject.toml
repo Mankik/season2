@@ -6,11 +6,11 @@ authors = ["alstjr7375 <alstjr7375@daum.net>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.10,<3.12"
 
 [tool.poetry.group.dev.dependencies]
-pyright = "^1.1.335"
-ruff = "^0.1.5"
+pyright = "^1.1.338"
+ruff = "^0.1.6"
 
 [tool.pyright]
 # https://microsoft.github.io/pyright/#/configuration?id=sample-pyprojecttoml-file
@@ -28,12 +28,13 @@ strictListInference = true
 strictDictionaryInference = true
 strictSetInference = true
 
-pythonVersion = "3.11"
+pythonVersion = "3.10"
 
 # https://docs.astral.sh/ruff/tutorial/#getting-started
 [tool.ruff]
-# Set the maximum line length to 99.
-line-length = 99
+# Set the maximum line length to 100
+line-length = 100
+indent-width = 2
 
 [tool.ruff.lint]
 # Add the `line-too-long` rule to the enforced rule set. By default, Ruff omits rules that
@@ -54,6 +55,9 @@ select = [
     "I",
 ]
 extend-select = ["E501"]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
 
 [build-system]
 requires = ["poetry-core"]
