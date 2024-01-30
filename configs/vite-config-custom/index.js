@@ -7,6 +7,7 @@ import { mergeConfig } from "vite";
 import dts from "vite-plugin-dts";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import react from "@vitejs/plugin-react-swc"
 
 // == Main Configs ============================================================
 export function NodeConfig(viteConfigEnv, extendConfigs = {}) {
@@ -15,6 +16,10 @@ export function NodeConfig(viteConfigEnv, extendConfigs = {}) {
 
 export function VueConfig(viteConfigEnv, extendConfigs = {}) {
   return buildConfig(viteConfigEnv, extendConfigs, VueBuilder);
+}
+
+export function ReactConfig(viteConfigEnv, extendConfigs = {}) {
+  return buildConfig(viteConfigEnv, extendConfigs, ReactBuilder);
 }
 
 function buildConfig(viteConfigEnv, extendConfigs, configBuilder) {
@@ -62,6 +67,16 @@ function VueBuilder(viteConfigEnv) {
 
   plugins.add(vue());
   plugins.add(vueJsx());
+  configs.add({
+    plugins: plugins.build()
+  });
+  return configs;
+}
+
+function ReactBuilder(viteConfigEnv) {
+  const { configs, plugins } = initCommonBuilder(viteConfigEnv);
+
+  plugins.add(react());
   configs.add({
     plugins: plugins.build()
   });

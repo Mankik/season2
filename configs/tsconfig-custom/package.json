@@ -4,6 +4,7 @@
   "private": true,
   "files": [
     "tsconfig.json",
+    "tsconfig.react.json",
     "tsconfig.vue.json"
   ]
 }
