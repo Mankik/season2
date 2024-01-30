@@ -11,3 +11,4 @@ declare function UserConfig(
 
 export declare const NodeConfig = UserConfig;
 export declare const VueConfig = UserConfig;
+export declare const ReactConfig = UserConfig;
