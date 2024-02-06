@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.3
+    environment:
+      MYSQL_DATABASE: 'mysqltest1'
+      MYSQL_USER: 'JY'
+      MYSQL_PASSWORD: 'tgyhuj3#'
+      MYSQL_ROOT_PASSWORD: 'tgyhuj3#'
+  web:
+    build: .
+    command: poetry run python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
