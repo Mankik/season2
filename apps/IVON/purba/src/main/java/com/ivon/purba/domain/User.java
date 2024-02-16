@@ -1,5 +1,6 @@
 package com.ivon.purba.domain;
 
+import com.ivon.purba.repository.UserRepository;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,18 +13,25 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Integer userId;
 
     private String name;
 
-    private Integer location;
+    private String phoneNumber;
 
-    @Column(nullable = false)
-    private Boolean easyDelete;
+    private Integer location = 0;
 
     private LocalDateTime creDate;
 
     private LocalDateTime updDate;
 
     private LocalDateTime delDate;
+
+    public User() {
+        this.creDate = LocalDateTime.now();
+    }
+    public Long getId() {
+        return (long) userId;
+    }
 }
