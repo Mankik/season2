@@ -1,4 +1,4 @@
-package com.ivon.purba.web;
+package com.ivon.purba.dto;
 
 import lombok.Getter;
 import lombok.Setter;
