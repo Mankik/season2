@@ -5,9 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserResponse {
+public class SingUpResponse {
     private String name;
     private String phoneNumber;
+    private String message;
 
-    // 생성자, 게터, 세터 생략
+    public SingUpResponse(String message) {
+        this.message = message;
+    }
 }
