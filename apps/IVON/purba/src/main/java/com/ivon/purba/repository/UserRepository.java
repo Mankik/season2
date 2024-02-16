@@ -3,6 +3,7 @@ package com.ivon.purba.repository;
 import com.ivon.purba.domain.User;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -16,17 +17,13 @@ public class UserRepository {
         return user.getId();
     }
 
-    public User findOne(Long id) {
-        return em.find(User.class, id);
-    }
-
-    public List<User> findAll() {
-        return em.createQuery("select u from User u", User.class).getResultList();
-    }
-
-    public List<User> findByName(String name) {
-        return em.createQuery("select u from User u where u.name = :name", User.class)
-                .setParameter("name", name)
-                .getResultList();
+    public User findByPhoneNumber(String phoneNumber) {
+        try{
+            return em.createQuery("select u from User u where u.phoneNumber = :phoneNumber", User.class)
+                    .setParameter("phoneNumber", phoneNumber)
+                    .getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
     }
 }
