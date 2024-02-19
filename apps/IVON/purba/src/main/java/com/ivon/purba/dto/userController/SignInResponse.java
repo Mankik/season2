@@ -1,4 +1,4 @@
-package com.ivon.purba.dto;
+package com.ivon.purba.dto.userController;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,14 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SignInResponse {
-    private Long user_id;
+    private Long userId;
     private String message;
 
     public SignInResponse(String message) {
         this.message = message;
-    }
-
-    public void setUserId(Long id) {
-        this.user_id = id;
     }
 }

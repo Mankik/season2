@@ -11,7 +11,7 @@ import lombok.Setter;
 public class EventType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer typeId;
+    private Long typeId;
 
     @Column(name = "type_name")
     private String typeName;

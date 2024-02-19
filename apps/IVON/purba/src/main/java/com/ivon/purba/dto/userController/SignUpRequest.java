@@ -1,4 +1,4 @@
-package com.ivon.purba.dto;
+package com.ivon.purba.dto.userController;
 
 import lombok.Getter;
 import lombok.Setter;

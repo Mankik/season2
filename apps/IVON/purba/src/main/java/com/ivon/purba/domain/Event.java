@@ -8,14 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "event")
-public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer eventId;
-
-    @ManyToOne
-    @JoinColumn(name = "content_id", nullable = false)
-    private Content content;
+public class Event extends Content {
 
     @Column(name = "event_type")
     private Integer eventType;

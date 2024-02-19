@@ -3,23 +3,29 @@ package com.ivon.purba.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "content")
 public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer contentId;
+    @Column(name = "content_id")
+    private Long contentId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false)
-    private Integer contentType;
+    @ManyToOne
+    @JoinColumn(name = "content_type", nullable = false)
+    private ContentType contentType;
 
     private String title;
 
@@ -29,9 +35,21 @@ public class Content {
     @Column(length = 1000)
     private String summary;
 
-    private LocalDateTime creDate;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, updatable = false)
+    private Date creDate;
 
-    private LocalDateTime updDate;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date updDate;
 
-    private LocalDateTime delDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date delDate;
+
+    @PreRemove
+    private void preRemove() {
+        this.delDate = new Date();
+    }
 }

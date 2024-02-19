@@ -11,7 +11,8 @@ import lombok.Setter;
 public class ContentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer typeId;
+    @Column(name = "type_id")
+    private Long typeId;
 
     @Column(name = "type_name")
     private String typeName;

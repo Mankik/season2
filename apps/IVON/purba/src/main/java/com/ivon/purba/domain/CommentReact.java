@@ -11,7 +11,7 @@ import lombok.Setter;
 public class CommentReact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer commentReactId;
+    private Long commentReactId;
 
     @ManyToOne
     @JoinColumn(name = "comment_id", nullable = false)
@@ -21,6 +21,6 @@ public class CommentReact {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "like")
-    private Boolean like;
+    @Column(name = "like_status")
+    private Boolean likeStatus;
 }

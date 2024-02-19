@@ -1,10 +1,12 @@
 package com.ivon.purba.domain;
 
-import com.ivon.purba.repository.UserRepository;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -22,16 +24,21 @@ public class User {
 
     private Integer location = 0;
 
-    private LocalDateTime creDate;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, updatable = false)
+    private Date creDate;
 
-    private LocalDateTime updDate;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date updDate;
 
-    private LocalDateTime delDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date delDate;
 
-    public User() {
-        this.creDate = LocalDateTime.now();
-    }
-    public Long getId() {
-        return (long) userId;
+    @PreRemove
+    private void preRemove() {
+        this.delDate = new Date();
     }
 }
