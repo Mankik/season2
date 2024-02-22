@@ -5,6 +5,7 @@ import com.ivon.purba.exception.ResourceNotFoundException;
 import com.ivon.purba.exception.UserAlreadyExistException;
 import com.ivon.purba.exception.UserNotFoundException;
 import com.ivon.purba.repository.UserRepository;
+import com.ivon.purba.service.serviceInterface.UserService;
 import jakarta.persistence.NoResultException;
 import jakarta.validation.constraints.Null;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class UserService {
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

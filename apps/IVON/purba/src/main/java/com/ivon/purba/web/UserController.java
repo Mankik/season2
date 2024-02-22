@@ -5,9 +5,7 @@ import com.ivon.purba.dto.userController.SignInRequest;
 import com.ivon.purba.dto.userController.SignInResponse;
 import com.ivon.purba.dto.userController.SignUpRequest;
 import com.ivon.purba.dto.userController.SingUpResponse;
-import com.ivon.purba.exception.UserAlreadyExistException;
-import com.ivon.purba.exception.UserNotFoundException;
-import com.ivon.purba.service.UserService;
+import com.ivon.purba.service.UserServiceImpl;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     //로그인
     @GetMapping(value = "/user/signIn")

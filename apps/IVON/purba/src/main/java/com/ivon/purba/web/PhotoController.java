@@ -5,14 +5,10 @@ import com.ivon.purba.domain.Photo;
 import com.ivon.purba.domain.User;
 import com.ivon.purba.dto.photoController.PhotoUploadRequest;
 import com.ivon.purba.dto.photoController.PhotoUploadResponse;
-import com.ivon.purba.exception.AIAnalysisException;
-import com.ivon.purba.exception.PhotoSaveException;
-import com.ivon.purba.exception.ResourceNotFoundException;
-import com.ivon.purba.service.AiServiceImpl;
-import com.ivon.purba.service.ContentTypeService;
+import com.ivon.purba.service.ContentTypeServiceImpl;
 import com.ivon.purba.service.FileServiceImpl;
+import com.ivon.purba.service.UserServiceImpl;
 import com.ivon.purba.service.serviceInterface.PhotoService;
-import com.ivon.purba.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,16 +17,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.util.UUID;
-
 @Controller
 @RequiredArgsConstructor
 public class PhotoController {
 
     private final PhotoService photoService;
-    private final UserService userService;
-    private final ContentTypeService contentTypeService;
+    private final UserServiceImpl userService;
+    private final ContentTypeServiceImpl contentTypeService;
     private final FileServiceImpl fileService;
 
     //사진 업로드 및 AI 분석
