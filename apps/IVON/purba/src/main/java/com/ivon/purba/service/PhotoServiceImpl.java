@@ -34,7 +34,7 @@ public class PhotoServiceImpl implements PhotoService {
         try {
             return photoRepository.save(photo);
         } catch (DataAccessException e) {
-            throw new PhotoSaveException("사진 저장 실패: " + e.getMessage());
+            throw new PhotoSaveException();
         }
     }
 
@@ -60,7 +60,7 @@ public class PhotoServiceImpl implements PhotoService {
             photo.setSummary(analyzedPhoto.getSummary());
             return save(photo);
         } catch (Exception e) {
-            throw new AIAnalysisException("Error analyzing photo: " + e.getMessage());
+            throw new AIAnalysisException();
         }
     }
 }

@@ -24,37 +24,25 @@ public class UserController {
     //로그인
     @GetMapping(value = "/user/signIn")
     public ResponseEntity<Object> userSignIn(@RequestBody SignInRequest request) {
-        try {
-            User user = userService.signIn(request.getPhoneNumber());
+        User user = userService.signIn(request.getPhoneNumber());
 
-            SignInResponse response = new SignInResponse("로그인을 성공했습니다.");
-            response.setUserId(user.getUserId());
-            return ResponseEntity.ok(response);
-        } catch (UserNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+        SignInResponse response = new SignInResponse("로그인을 성공했습니다.");
+        response.setUserId(user.getUserId());
+        return ResponseEntity.ok(response);
     }
 
     //회원가입
     @PostMapping(value = "/user/signUp")
     public ResponseEntity<?> userSignUp(@RequestBody SignUpRequest request) {
-        try {
-            User member = new User();
-            member.setName(request.getName());
-            member.setPhoneNumber(request.getPhoneNumber());
+        User member = new User();
+        member.setName(request.getName());
+        member.setPhoneNumber(request.getPhoneNumber());
 
-            userService.singUp(member);
-            SingUpResponse singUpResponse = new SingUpResponse("회원가입을 성공했습니다!");
-            singUpResponse.setName(member.getName());
-            singUpResponse.setPhoneNumber(member.getPhoneNumber());
+        userService.singUp(member);
+        SingUpResponse singUpResponse = new SingUpResponse("회원가입을 성공했습니다!");
+        singUpResponse.setName(member.getName());
+        singUpResponse.setPhoneNumber(member.getPhoneNumber());
 
-            return ResponseEntity.status(HttpStatus.CREATED).body(singUpResponse);
-        } catch (UserAlreadyExistException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(singUpResponse);
     }
 }

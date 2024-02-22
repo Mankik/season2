@@ -33,32 +33,23 @@ public class PhotoController {
     private final ContentTypeService contentTypeService;
     private final FileServiceImpl fileService;
 
+    //사진 업로드 및 AI 분석
     @PostMapping(value = "/photo/ai-analysis", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadPhoto(@ModelAttribute PhotoUploadRequest photoUploadRequest) {
-        try {
-            User user = userService.findById(photoUploadRequest.getUserId());
-            ContentType contentType = contentTypeService.getContentType("image");
+        User user = userService.findById(photoUploadRequest.getUserId());
+        ContentType contentType = contentTypeService.getContentType("image");
 
-            MultipartFile file = photoUploadRequest.getFile();
+        MultipartFile file = photoUploadRequest.getFile();
 
-            String storedFileName = fileService.storeFile(file);
+        String storedFileName = fileService.storeFile(file);
 
-            Photo photo = photoService.createPhoto(user, storedFileName, contentType);
-            Photo savedPhoto = photoService.save(photo);
+        Photo photo = photoService.createPhoto(user, storedFileName, contentType);
+        Photo savedPhoto = photoService.save(photo);
 
-            savedPhoto = photoService.analyzeAndSavePhotoDetails(storedFileName, savedPhoto);
+        savedPhoto = photoService.analyzeAndSavePhotoDetails(storedFileName, savedPhoto);
 
-            PhotoUploadResponse response = new PhotoUploadResponse();
-            response.setPhotoId(savedPhoto.getContentId());
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch (PhotoSaveException | AIAnalysisException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+        PhotoUploadResponse response = new PhotoUploadResponse();
+        response.setPhotoId(savedPhoto.getContentId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-
-
 }

@@ -51,15 +51,15 @@ public class AiServiceImpl implements AiService {
 
             int exitCode = process.waitFor();
             if (exitCode != 0) {
-                throw new AIAnalysisException("AI 분석 실패: Python 스크립트가 비정상 종료되었습니다. 오류 메시지: " + errorResultBuilder.toString());
+                throw new AIAnalysisException("AI 분석 실패: Python 스크립트가 비정상 종료되었습니다. 오류 메시지:" + errorResultBuilder.toString());
             }
 
             String jsonResult = jsonResultBuilder.toString();
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return objectMapper.readValue(jsonResult, PhotoAnalysisResponse.class);
         } catch (IOException | InterruptedException e) {
-            Thread.currentThread().interrupt(); // InterruptedException 발생 시 현재 스레드를 중단 상태로 설정
-            throw new AIAnalysisException("AI 분석 실패: " + e.getMessage());
+            Thread.currentThread().interrupt();
+            throw new AIAnalysisException("AI 분석 실패:" + e.getMessage());
         }
     }
 }
