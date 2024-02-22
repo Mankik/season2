@@ -44,7 +44,7 @@ public class PhotoServiceImpl implements PhotoService {
         photo.setUser(user);
         photo.setPhotoUrl(photoUrl);
         photo.setContentType(contentType);
-        return photoRepository.save(photo);
+        return save(photo);
     }
 
     @Override

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ContentTypeRepository extends JpaRepository<ContentType, Long> {
-    public ContentType findByTypeName(String typeName);
+    ContentType findByTypeName(String typeName);
 }

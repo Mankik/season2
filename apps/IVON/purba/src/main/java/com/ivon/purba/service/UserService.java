@@ -22,36 +22,28 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    //회원가입
-    public Boolean singUp(User user) {
+    // 회원가입
+    public Boolean signUp(User user) {
         validateDuplicationUser(user);
-
         userRepository.save(user);
         return true;
     }
 
-    //로그인
+    // 로그인
     public User signIn(String phoneNumber) {
-        User user = userRepository.findByPhoneNumber(phoneNumber);
-        if (user == null) {
-            throw new UserNotFoundException();
-        }
-        return user;
+        return userRepository.findByPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new UserNotFoundException("해당 전화번호로 등록된 유저가 없습니다."));
     }
 
-
     private void validateDuplicationUser(User user) {
-        User findUser = userRepository.findByPhoneNumber(user.getPhoneNumber());
-        if (!(findUser == null)) {
-            throw new UserAlreadyExistException();
-        }
+        userRepository.findByPhoneNumber(user.getPhoneNumber())
+                .ifPresent(u -> {
+                    throw new UserAlreadyExistException("이미 존재하는 유저입니다.");
+                });
     }
 
     public User findById(Long id) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (userOptional.isEmpty()) {
-            throw new UserNotFoundException("해당 회원 정보가 없습니다.");
-        }
-        return userOptional.get();
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("해당 ID로 유저를 조회할 수 없습니다."));
     }
 }

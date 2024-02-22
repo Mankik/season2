@@ -38,7 +38,7 @@ public class UserController {
         member.setName(request.getName());
         member.setPhoneNumber(request.getPhoneNumber());
 
-        userService.singUp(member);
+        userService.signUp(member);
         SingUpResponse singUpResponse = new SingUpResponse("회원가입을 성공했습니다!");
         singUpResponse.setName(member.getName());
         singUpResponse.setPhoneNumber(member.getPhoneNumber());
