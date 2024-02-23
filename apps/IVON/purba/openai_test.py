@@ -28,7 +28,7 @@ def analyze_image(image_path):
                 "content": [
                     {
                         "type": "text",
-                        "text": "이 이미지를 요약해서 title, summary을 한국어로 반환해줘"
+                        "text": "이 이미지를 요약해서 choises 필드 안에 Title, Summary을 반드시 넣어주고 만약 Location, Start Date, End Date, Bank Account, Charge 에 해당하는 항목이 있다면 넣어서 반환해줘"
                     },
                     {
                         "type": "image_url",
