@@ -27,29 +27,44 @@ public class Content {
     @JoinColumn(name = "content_type", nullable = false)
     private ContentType contentType;
 
-    private String title;
-
     @Column(name = "content_data", length = 10000)
     private String contentData;
+
+    //AI Analyst
+    private String title;
+
+    @Column(name = "start_date")
+    private Date startDate;
+
+    @Column(name = "end_date")
+    private Date endDate;
 
     @Column(length = 1000)
     private String summary;
 
+    private Integer charge;
+
+    private String location;
+
+    @Column(name = "back_account")
+    private String bankAccount;
+
+    //CRUD Date
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, updatable = false)
-    private Date creDate;
+    private Date contentCreDate;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Date updDate;
+    private Date contentUpdDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date delDate;
+    private Date contentDelDate;
 
     @PreRemove
     private void preRemove() {
-        this.delDate = new Date();
+        this.contentDelDate = new Date();
     }
 }

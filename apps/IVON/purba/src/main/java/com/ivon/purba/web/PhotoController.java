@@ -41,8 +41,7 @@ public class PhotoController {
 
         savedPhoto = photoService.analyzeAndSavePhotoDetails(storedFileName, savedPhoto);
 
-        PhotoUploadResponse response = new PhotoUploadResponse();
-        response.setPhotoId(savedPhoto.getContentId());
+        PhotoUploadResponse response = new PhotoUploadResponse(contentType.getTypeName(), savedPhoto.getTitle(), savedPhoto.getSummary(), savedPhoto.getLocation(), savedPhoto.getStartDate(), savedPhoto.getEndDate(), savedPhoto.getCharge(), savedPhoto.getBankAccount());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

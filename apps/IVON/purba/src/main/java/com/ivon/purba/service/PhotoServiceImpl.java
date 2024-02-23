@@ -1,5 +1,6 @@
 package com.ivon.purba.service;
 
+import com.ivon.purba.domain.Content;
 import com.ivon.purba.domain.ContentType;
 import com.ivon.purba.domain.Photo;
 import com.ivon.purba.domain.User;
@@ -58,6 +59,11 @@ public class PhotoServiceImpl implements PhotoService {
             PhotoAnalysisResponse analyzedPhoto = aiService.analyzePhoto(filePath);
             photo.setTitle(analyzedPhoto.getTitle());
             photo.setSummary(analyzedPhoto.getSummary());
+            photo.setLocation(analyzedPhoto.getLocation());
+            photo.setStartDate(analyzedPhoto.getStartDate());
+            photo.setEndDate(analyzedPhoto.getEndDate());
+            photo.setCharge(analyzedPhoto.getCharge());
+            photo.setBankAccount(analyzedPhoto.getBankAccount());
             return save(photo);
         } catch (Exception e) {
             throw new AIAnalysisException();
