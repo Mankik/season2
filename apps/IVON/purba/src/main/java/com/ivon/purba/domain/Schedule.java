@@ -15,7 +15,8 @@ import java.util.Date;
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long scheduleId;
+    @Column(name = "schedule_id", nullable = false, updatable = false, unique = true)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -27,15 +28,16 @@ public class Schedule {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false, updatable = false)
+    @Column(name = "schedule_cre_date",nullable = false, updatable = false)
     private Date creDate;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
+    @Column(name = "schedule_upd_date",nullable = false)
     private Date updDate;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "schedule_del_date")
     private Date delDate;
 
     @PreRemove

@@ -25,7 +25,7 @@ public class UserController {
         User user = userService.signIn(request.getPhoneNumber());
 
         SignInResponse response = new SignInResponse("로그인을 성공했습니다.");
-        response.setUserId(user.getUserId());
+        response.setUserId(user.getId());
         return ResponseEntity.ok(response);
     }
 

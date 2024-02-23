@@ -16,19 +16,19 @@ import java.util.Date;
 public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "content_id")
-    private Long contentId;
+    @Column(name = "content_id", nullable = false, updatable = false, unique = true)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "content_type", nullable = false)
+    @JoinColumn(name = "content_type", nullable = false, updatable = false)
     private ContentType contentType;
 
     @Column(name = "content_data", length = 10000)
-    private String contentData;
+    private String data;
 
     //AI Analyst
     private String title;
@@ -46,25 +46,26 @@ public class Content {
 
     private String location;
 
-    @Column(name = "back_account")
+    @Column(name = "bank_account")
     private String bankAccount;
 
     //CRUD Date
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false, updatable = false)
-    private Date contentCreDate;
+    @Column(name = "content_cre_date", nullable = false, updatable = false)
+    private Date creDate;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date contentUpdDate;
+    @Column(name = "content_upd_date", nullable = false)
+    private Date updDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date contentDelDate;
+    @Column(name = "content_del_date")
+    private Date delDate;
 
     @PreRemove
     private void preRemove() {
-        this.contentDelDate = new Date();
+        this.delDate = new Date();
     }
 }

@@ -12,6 +12,6 @@ import java.util.Date;
 @Table(name = "photo")
 public class Photo extends Content {
 
-    @Column(name = "photo_url")
-    private String photoUrl;
+    @Column(name = "photo_url", nullable = false, length = 200)
+    private String url;
 }

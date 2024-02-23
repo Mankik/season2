@@ -1,0 +1,2 @@
+INSERT INTO content_type (type_name) VALUES ('image');
+INSERT INTO content_type (type_name) VALUES ('event');

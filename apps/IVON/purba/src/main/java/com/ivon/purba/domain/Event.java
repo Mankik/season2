@@ -10,8 +10,7 @@ import lombok.Setter;
 @Table(name = "event")
 public class Event extends Content {
 
-    @Column(name = "event_type")
-    private Integer eventType;
-
-    private Integer location;
+    @ManyToOne
+    @JoinColumn(name = "event_type", nullable = false)
+    private EventType eventType;
 }

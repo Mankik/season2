@@ -43,7 +43,7 @@ public class PhotoServiceImpl implements PhotoService {
     public Photo createPhoto(User user, String photoUrl, ContentType contentType) {
         Photo photo = new Photo();
         photo.setUser(user);
-        photo.setPhotoUrl(photoUrl);
+        photo.setUrl(photoUrl);
         photo.setContentType(contentType);
         return save(photo);
     }

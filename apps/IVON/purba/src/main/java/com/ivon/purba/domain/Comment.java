@@ -3,6 +3,10 @@ package com.ivon.purba.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -11,7 +15,9 @@ import lombok.Setter;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    @Column(name = "comment_id", nullable = false, updatable = false, unique = true)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -21,13 +27,27 @@ public class Comment {
     private Content content;
 
     @Column(name = "comment_data", length = 10000)
-    private String commentData;
+    private String data;
 
     @ManyToOne
     @JoinColumn(name = "parent_comment_id")
-    private Comment parentComment;
+    private Comment parentId;
 
-    private java.time.LocalDateTime creDate;
-    private java.time.LocalDateTime updDate;
-    private java.time.LocalDateTime delDate;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "comment_cre_date", nullable = false, updatable = false)
+    private Date creDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "content_upd_date", nullable = false)
+    private Date updDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "comment_del_date")
+    private Date delDate;
+    @PreRemove
+    private void preRemove() {
+        this.delDate = new Date();
+    }
 }

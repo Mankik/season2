@@ -15,11 +15,12 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "user_id", nullable = false, updatable = false, unique = true)
+    private Long id;
 
     private String name;
 
+    @Column(name = "phone_number", unique = true)
     private String phoneNumber;
 
     private Integer location = 0;
@@ -36,7 +37,6 @@ public class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date delDate;
-
     @PreRemove
     private void preRemove() {
         this.delDate = new Date();
