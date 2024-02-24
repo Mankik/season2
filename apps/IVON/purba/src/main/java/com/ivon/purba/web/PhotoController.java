@@ -29,7 +29,7 @@ public class PhotoController {
     //사진 업로드 및 AI 분석
     @PostMapping(value = "/photo/ai-analysis", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadPhoto(@ModelAttribute PhotoUploadRequest photoUploadRequest) {
-        User user = userService.findById(photoUploadRequest.getUserId());
+        User user = userService.getUserById(photoUploadRequest.getUserId());
         ContentType contentType = contentTypeService.getContentType("image");
 
         MultipartFile file = photoUploadRequest.getFile();

@@ -5,6 +5,8 @@ import com.ivon.purba.dto.userController.SignInRequest;
 import com.ivon.purba.dto.userController.SignInResponse;
 import com.ivon.purba.dto.userController.SignUpRequest;
 import com.ivon.purba.dto.userController.SingUpResponse;
+import com.ivon.purba.exception.ResourceNotFoundException;
+import com.ivon.purba.service.SmsServiceImpl;
 import com.ivon.purba.service.UserServiceImpl;
 import lombok.*;
 import org.springframework.http.HttpStatus;
@@ -22,25 +24,18 @@ public class UserController {
     //로그인
     @GetMapping(value = "/user/signIn")
     public ResponseEntity<Object> userSignIn(@RequestBody SignInRequest request) {
-        User user = userService.signIn(request.getPhoneNumber());
+        Long userId = userService.signIn(request.getPhoneNumber());
 
-        SignInResponse response = new SignInResponse("로그인을 성공했습니다.");
-        response.setUserId(user.getId());
+        SignInResponse response = new SignInResponse(userId);
         return ResponseEntity.ok(response);
     }
 
     //회원가입
     @PostMapping(value = "/user/signUp")
     public ResponseEntity<?> userSignUp(@RequestBody SignUpRequest request) {
-        User member = new User();
-        member.setName(request.getName());
-        member.setPhoneNumber(request.getPhoneNumber());
+        userService.signUp(userService.createUser(request));
 
-        userService.signUp(member);
-        SingUpResponse singUpResponse = new SingUpResponse("회원가입을 성공했습니다!");
-        singUpResponse.setName(member.getName());
-        singUpResponse.setPhoneNumber(member.getPhoneNumber());
-
+        SingUpResponse singUpResponse = new SingUpResponse();
         return ResponseEntity.status(HttpStatus.CREATED).body(singUpResponse);
     }
 }

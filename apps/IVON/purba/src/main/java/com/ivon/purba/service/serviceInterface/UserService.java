@@ -4,6 +4,9 @@ import com.ivon.purba.domain.User;
 
 public interface UserService {
     Boolean signUp(User user);
-    User signIn(String phoneNumber);
-    User findById(Long id);
+    Long signIn(String phoneNumber);
+
+    User getUserByPhoneNumber(String phoneNumber);
+
+    User getUserById(Long id);
 }

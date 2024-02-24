@@ -6,11 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SingUpResponse {
-    private String name;
-    private String phoneNumber;
     private String message;
 
-    public SingUpResponse(String message) {
-        this.message = message;
+    public SingUpResponse() {
+        this.message = "회원가입을 성공했습니다!";
     }
 }
