@@ -1,0 +1,139 @@
+### 회원가입
+###
+POST http://localhost:8080/user/signUp
+Content-Type: application/json
+
+{
+  "name": "구준",
+  "phoneNumber": "0000000000000000"
+}
+
+<> 2024-02-24T142017.201.json
+<> 2024-02-24T142013.409.txt
+
+
+### 로그인
+###
+GET http://localhost:8080/user/signIn
+Content-Type: application/json
+
+{
+  "phoneNumber": "0000000000000000"
+}
+
+<> 2024-02-24T142421.200.json
+<> 2024-02-24T142024.404.txt
+<> 2024-02-24T134323.404.txt
+
+
+
+
+###사진 업로드
+###
+POST http://localhost:8080/photo/ai-analysis
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="userId"
+
+1
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="example.jpg"
+
+< C:\Users\dydal\OneDrive\Desktop\example.jpg
+--WebAppBoundary--
+
+<> 2024-02-22T143656.400.txt
+
+
+
+### 전화번호 인증코드 발송
+###
+POST http://localhost:8080/sms/send
+Content-Type: application/json
+
+{
+  "to" : "0000000000000000"
+}
+
+<> 2024-02-24T142203.201.json
+
+
+### 전화번호 인증코드 확인됨
+###
+POST http://localhost:8080/sms/verified
+Content-Type: application/json
+
+{
+  "to" : "0000000000000000",
+  "code" : "-1328438272"
+}
+
+<> 2024-02-24T142155.200.json
+
+###
+POST http://localhost:8080/event/upload
+Content-Type: application/json
+
+{
+  "userId" : 1,
+  "contentTypeName": "evt",
+  "eventTypeName": "전체"
+}
+
+<> 2024-02-24T213232.200.json
+<> 2024-02-24T210918.200.json
+<> 2024-02-24T210657.500.json
+<> 2024-02-24T210311.200.json
+<> 2024-02-24T210258.404.txt
+<> 2024-02-24T210244.404.txt
+<> 2024-02-24T205731.500.json
+<> 2024-02-24T205645.200.json
+<> 2024-02-24T205045.404.txt
+<> 2024-02-24T204937.404.txt
+<> 2024-02-24T204907.404.txt
+
+### ID로 이벤트 가져오기
+###
+GET http://localhost:8080/event/?eventId=4
+
+<> 2024-02-24T220312.200.json
+<> 2024-02-24T220254.400.json
+<> 2024-02-24T215111.200.json
+<> 2024-02-24T214915.404.json
+<> 2024-02-24T214818.404.json
+
+###
+
+<> 2024-02-24T214948.400.txt
+
+
+### 특정 이벤트 업데이트
+###
+PUT http://localhost:8080/event/update/?eventId=4
+Content-Type: application/json
+
+{
+  "userId": 0,
+  "contentTypeName": "",
+  "title": "",
+  "data": "",
+  "photoUrl": "",
+  "startDate": "",
+  "endDate": "",
+  "charge": 0,
+  "eventTypeName": "",
+  "backAccount": ""
+}
+
+<> 2024-02-24T220325.404.txt
+<> 2024-02-24T220227.405.json
+<> 2024-02-24T215756.405.json
+<> 2024-02-24T215656.405.json
+
+### 이벤트 삭제
+###
+DELETE http://localhost:8080/event/delete/?eventId=4
+
+<> 2024-02-24T220619.200.txt
+<> 2024-02-24T220447.405.json
