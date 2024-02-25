@@ -3,6 +3,7 @@ package com.ivon.purba.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -27,11 +28,15 @@ public class Content {
     @JoinColumn(name = "content_type", nullable = false, updatable = false)
     private ContentType contentType;
 
+    @Column(name = "easy_delete")
+    @ColumnDefault("false")
+    private Boolean easyDelete;
+
+    //Photo & Event attributes & some attributes for AI Analyst
+    private String title;
+
     @Column(name = "content_data", length = 10000)
     private String data;
-
-    //AI Analyst
-    private String title;
 
     @Column(name = "start_date")
     private Date startDate;

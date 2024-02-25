@@ -19,12 +19,9 @@ public class ContentTypeServiceImpl implements ContentTypeService {
         this.contentTypeRepository = contentTypeRepository;
     }
 
-    public ContentType getContentType(String typeName) {
-        try {
-            return contentTypeRepository.findByName(typeName);
-        } catch (Exception e) {
-            throw new ResourceNotFoundException("존재하지 않는 콘텐트 유형입니다.:" + e.getMessage());
-        }
+    @Override
+    public ContentType getContentType(String contentTypeName) {
+        return contentTypeRepository.findByName(contentTypeName)
+                .orElseThrow(() -> new ResourceNotFoundException("해당 콘텐트의 종류가 존재하지 않습니다.: " + contentTypeName));
     }
-
 }
