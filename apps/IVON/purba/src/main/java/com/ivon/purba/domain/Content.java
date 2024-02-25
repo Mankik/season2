@@ -73,4 +73,102 @@ public class Content {
     private void preRemove() {
         this.delDate = new Date();
     }
+
+    public static class Builder {
+        private ContentType contentType;
+        private EventType eventType;
+        private User user;
+        private String location;
+        private String title;
+        private String data;
+        private String photoUrl;
+        private Date startDate;
+        private Date endDate;
+        private Integer charge;
+        private String bankAccount;
+        private boolean easyDelete;
+        private String summary;
+
+        public Builder contentType(ContentType contentType) {
+            this.contentType = contentType;
+            return this;
+        }
+
+        public Builder eventType(EventType eventType) {
+            this.eventType = eventType;
+            return this;
+        }
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Builder location(String location) {
+            this.location = location;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder data(String data) {
+            this.data = data;
+            return this;
+        }
+
+        public Builder photoUrl(String photoUrl) {
+            this.photoUrl = photoUrl;
+            return this;
+        }
+
+        public Builder startDate(Date startDate) {
+            this.startDate = startDate;
+            return this;
+        }
+
+        public Builder endDate(Date endDate) {
+            this.endDate = endDate;
+            return this;
+        }
+
+        public Builder charge(Integer charge) {
+            this.charge = charge;
+            return this;
+        }
+
+        public Builder bankAccount(String bankAccount) {
+            this.bankAccount = bankAccount;
+            return this;
+        }
+
+        public Builder easyDelete(boolean easyDelete) {
+            this.easyDelete = easyDelete;
+            return this;
+        }
+
+        public Builder summary(String summary) {
+            this.summary = summary;
+            return this;
+        }
+
+        public Event build() {
+            Event event = new Event();
+            event.setContentType(this.contentType);
+            event.setEventType(this.eventType);
+            event.setUser(this.user);
+            event.setTitle(this.title);
+            event.setData(this.data);
+            event.setPhotoUrl(this.photoUrl);
+            event.setStartDate(this.startDate);
+            event.setEndDate(this.endDate);
+            event.setCharge(this.charge);
+            event.setBankAccount(this.bankAccount);
+            event.setEasyDelete(this.easyDelete);
+            event.setSummary(this.summary);
+            return event;
+        }
+    }
 }

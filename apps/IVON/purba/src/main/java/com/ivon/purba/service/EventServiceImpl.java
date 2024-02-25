@@ -2,7 +2,6 @@ package com.ivon.purba.service;
 
 import com.ivon.purba.domain.*;
 import com.ivon.purba.dto.aiService.EventAnalysisResponse;
-import com.ivon.purba.dto.aiService.PhotoAnalysisResponse;
 import com.ivon.purba.dto.eventController.EventPostRequest;
 import com.ivon.purba.dto.eventController.EventUpdateRequest;
 import com.ivon.purba.exception.AIAnalysisException;
@@ -12,7 +11,6 @@ import com.ivon.purba.service.serviceInterface.EventService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,29 +31,63 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event getEvent(Long eventId) {
-        return eventRepository.findByContentId(eventId)
-                .orElseThrow(() -> new ResourceNotFoundException("해당 이벤트가 존재하지 않습니다.: " + eventId));
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new ResourceNotFoundException("없는 이벤트입니다.: " + eventId));
+
+        if (Boolean.TRUE.equals(event.getEasyDelete())) {
+            throw new ResourceNotFoundException("이미 삭제된 이벤트입니다.: " + eventId);
+        }
+
+        return event;
     }
 
     @Override
-    public Long createEvent(ContentType contentType, EventType eventType, User user, EventPostRequest request){
-        Event event = new Event();
-        setEventAttributes(contentType, eventType, user, event, request.getTitle(), request.getData(), request.getPhotoUrl(), request.getStartDate(), request.getEndDate(), request.getCharge(), request.getBackAccount());
+    public Long createEvent(ContentType contentType, EventType eventType, User user, EventPostRequest request) {
+        Event event = new Event.Builder()
+                .contentType(contentType)
+                .eventType(eventType)
+                .user(user)
+                .location(request.getLocation())
+                .title(request.getTitle())
+                .data(request.getData())
+                .photoUrl(request.getPhotoUrl())
+                .startDate(request.getStartDate())
+                .endDate(request.getEndDate())
+                .charge(request.getCharge())
+                .bankAccount(request.getBackAccount())
+                .summary(request.getSummary())
+                .build();
+
         return saveEvent(event);
     }
 
     @Override
-    public void updateEvent(Event event, ContentType contentType, EventType eventType, User user, EventUpdateRequest request) {
-        setEventAttributes(contentType, eventType, user, event, request.getTitle(), request.getData(), request.getPhotoUrl(), request.getStartDate(), request.getEndDate(), request.getCharge(), request.getBackAccount());
+    public void updateEvent(Long eventId, EventType eventType, User user, EventUpdateRequest request) {
+        Event event = getEvent(eventId);
+        setEventAttributes(event, eventType, user, request);
         saveEvent(event);
     }
 
     @Override
-    public void deleteEventById(Long id){
-        eventRepository.findById(id).ifPresent(event -> {
-            event.setEasyDelete(true);
-            saveEvent(event);
-        });
+    public void deleteEventById(Long eventId) {
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new ResourceNotFoundException("없는 이벤트입니다.: " + eventId));
+
+        if (Boolean.TRUE.equals(event.getEasyDelete())) {
+            throw new ResourceNotFoundException("이미 삭제된 이벤트입니다.: " + eventId);
+        }
+
+        event.setEasyDelete(true);
+        saveEvent(event);
+    }
+
+    public Event cancelDeleteEventById(Long eventId){
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new ResourceNotFoundException("복구할 수 없는 이벤트입니다.: " + eventId));
+
+        event.setEasyDelete(false);
+        saveEvent(event);
+        return event;
     }
 
     @Override
@@ -63,51 +95,61 @@ public class EventServiceImpl implements EventService {
         return eventRepository.findAllByLocation(location);
     }
 
-    private void setEventAttributes(ContentType contentType, EventType eventType, User user, Event event, String title, String data, String photoUrl, Date startDate, Date endDate, Integer charge, String backAccount) {
-        if (contentType != null) {
-            event.setContentType(contentType);
+    @Override
+    public Long analyzeAndSaveEventDetails(Event event) throws AIAnalysisException {
+        try {
+            EventAnalysisResponse analyzedEvent = aiService.analyzeEvent(event);
+
+            if (analyzedEvent.getSummary() != null) {
+                event.setSummary(analyzedEvent.getSummary());
+            }
+            if (analyzedEvent.getStartDate() != null) {
+                event.setStartDate(analyzedEvent.getStartDate());
+            }
+            if (analyzedEvent.getEndDate() != null) {
+                event.setEndDate(analyzedEvent.getEndDate());
+            }
+            if (analyzedEvent.getCharge() != null) {
+                event.setCharge(analyzedEvent.getCharge());
+            }
+            if (analyzedEvent.getBankAccount() != null) {
+                event.setBankAccount(analyzedEvent.getBankAccount());
+            }
+
+            return saveEvent(event);
+        } catch (Exception e) {
+            throw new AIAnalysisException();
         }
+    }
+
+    private void setEventAttributes(Event event, EventType eventType, User user, EventUpdateRequest request) {
         if (eventType != null) {
             event.setEventType(eventType);
         }
         if (user != null) {
             event.setUser(user);
         }
-        if (title != null) {
-            event.setTitle(title);
+        if (request.getTitle() != null) {
+            event.setTitle(request.getTitle());
         }
-        if (data != null) {
-            event.setData(data);
+        if (request.getData() != null) {
+            event.setData(request.getData());
         }
-        if (photoUrl != null) {
-            event.setPhotoUrl(photoUrl);
+        if (request.getPhotoUrl() != null) {
+            event.setPhotoUrl(request.getPhotoUrl());
         }
-        if (startDate != null) {
-            event.setStartDate(startDate);
+        if (request.getStartDate() != null) {
+            event.setStartDate(request.getStartDate());
         }
-        if (endDate != null) {
-            event.setEndDate(endDate);
+        if (request.getEndDate() != null) {
+            event.setEndDate(request.getEndDate());
         }
-        if (charge != null) {
-            event.setCharge(charge);
+        if (request.getCharge() != null) {
+            event.setCharge(request.getCharge());
         }
-        if (backAccount != null) {
-            event.setBankAccount(backAccount);
-        }
-    }
-
-    @Override
-    public Long analyzeAndSaveEventDetails(Event event) throws AIAnalysisException {
-        try {
-            EventAnalysisResponse analyzedEvent = aiService.analyzeEvent(event);
-            event.setSummary(analyzedEvent.getSummary());
-            event.setStartDate(analyzedEvent.getStartDate());
-            event.setEndDate(analyzedEvent.getEndDate());
-            event.setCharge(analyzedEvent.getCharge());
-            event.setBankAccount(analyzedEvent.getBankAccount());
-            return saveEvent(event);
-        } catch (Exception e) {
-            throw new AIAnalysisException();
+        if (request.getBackAccount() != null) {
+            event.setBankAccount(request.getBackAccount());
         }
     }
 }
+

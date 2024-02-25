@@ -5,16 +5,14 @@ import com.ivon.purba.domain.ContentType;
 import com.ivon.purba.domain.Event;
 import com.ivon.purba.domain.EventType;
 import com.ivon.purba.domain.User;
-import com.ivon.purba.dto.eventController.EventGetAllRequest;
-import com.ivon.purba.dto.eventController.EventPostRequest;
-import com.ivon.purba.dto.eventController.EventPostResponse;
-import com.ivon.purba.dto.eventController.EventUpdateRequest;
+import com.ivon.purba.dto.eventController.*;
 import com.ivon.purba.dto.smsController.SmsServiceSendResponse;
 import com.ivon.purba.service.ContentTypeServiceImpl;
 import com.ivon.purba.service.EventServiceImpl;
 import com.ivon.purba.service.EventTypeServiceImpl;
 import com.ivon.purba.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -44,21 +42,39 @@ public class EventController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/event/update/")
-    public ResponseEntity<String> updateEvent(@RequestParam("eventId") Long eventId, @RequestBody EventUpdateRequest request) {
+    @PutMapping("/event/update/ai-analyze")
+    public ResponseEntity<String> updateEventAIAnalyze(@RequestParam("eventId") Long eventId) {
         Event event = eventService.getEvent(eventId);
-        ContentType contentType = contentTypeService.getContentType("event");
-        EventType eventType = eventTypeService.getEventTypeByName(request.getContentTypeName());
-        User user = userService.getUserById(request.getUserId());
 
-        eventService.updateEvent(event, contentType, eventType, user,request);
-        return ResponseEntity.ok("이벤트 업데이트 성공");
+        eventService.analyzeAndSaveEventDetails(event);
+
+        return ResponseEntity.ok("이벤트 AI 분석 및 업데이트 성공");
     }
 
     @GetMapping("/event/")
-    public ResponseEntity<Event> getEvent(@RequestParam("eventId") Long eventId) {
+    public ResponseEntity<EventGetResponse> getEvent(@RequestParam("eventId") Long eventId) {
         Event event = eventService.getEvent(eventId);
-        return ResponseEntity.ok(event);
+
+        EventGetResponse  response = new EventGetResponse(event);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+    }
+
+    @PutMapping("/event/update/")
+    public ResponseEntity<String> updateEvent(@RequestParam("eventId") Long eventId, @RequestBody EventUpdateRequest request) {
+        Event event = eventService.getEvent(eventId);
+        EventType eventType = eventTypeService.getEventTypeByName(request.getEventTypeName());
+        User user = userService.getUserById(request.getUserId());
+
+        eventService.updateEvent(event.getId(), eventType, user,request);
+        return ResponseEntity.ok("이벤트 업데이트 성공");
+    }
+
+    @PutMapping("/event/cancelDelete/")
+    public ResponseEntity<String> cancelDeleteEvent(@RequestParam("eventId") Long eventId) {
+        Event event = eventService.cancelDeleteEventById(eventId);
+
+
+        return ResponseEntity.ok("이벤트 복구 성공");
     }
 
     @DeleteMapping("/event/delete/")

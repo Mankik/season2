@@ -20,7 +20,7 @@ public interface EventService {
 
     Long createEvent(ContentType contentType, EventType eventType, User user, EventPostRequest request);
 
-    void updateEvent(Event event, ContentType contentType, EventType eventType, User user, EventUpdateRequest request);
+    void updateEvent(Long eventId, EventType eventType, User user, EventUpdateRequest request);
 
     void deleteEventById(Long id);
 

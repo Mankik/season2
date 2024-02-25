@@ -9,13 +9,12 @@ import java.util.Date;
 @Setter
 public class EventUpdateRequest {
     private Long userId;
-    private String contentTypeName;
+    private String eventTypeName;
     private String title;
     private String data;
     private String photoUrl;
     private Date startDate;
     private Date endDate;
     private Integer charge;
-    private String eventTypeName;
     private String backAccount;
 }
