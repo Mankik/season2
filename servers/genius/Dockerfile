@@ -38,8 +38,9 @@ COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 WORKDIR /app
 COPY src ./src
-COPY src/manage.py ./manage.py
-COPY djangoProject ./djangoProject
+COPY manage.py ./manage.py
+COPY genius ./genius
+COPY geniusback ./geniusback
 RUN apt-get update && apt-get install -y default-libmysqlclient-dev gcc
 
 
