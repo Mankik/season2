@@ -1909,6 +1909,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"IVON@workspace:apps/IVON":
+  version: 0.0.0-use.local
+  resolution: "IVON@workspace:apps/IVON"
+  dependencies:
+    "@types/node": ^18.18.5
+    "@vitejs/plugin-vue": ^4.4.0
+    "@vitejs/plugin-vue-jsx": ^3.0.2
+    "@vueuse/core": ^10.5.0
+    eslint-config-vue: "workspace:^"
+    pinia: ^2.1.7
+    prettier-config-custom: "workspace:^"
+    radix-vue: ^1.1.1
+    tsconfig-custom: "workspace:^"
+    typescript: ^5.3.2
+    vite-config-custom: "workspace:^"
+    vue: ^3.3.8
+    vue-router: ^4.2.5
+  languageName: unknown
+  linkType: soft
+
 "abbrev@npm:^2.0.0":
   version: 2.0.0
   resolution: "abbrev@npm:2.0.0"
