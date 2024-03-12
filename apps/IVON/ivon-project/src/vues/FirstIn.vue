@@ -5,28 +5,16 @@
             <p>12:34</p>
             <img id=battery src = '../assets/battery.png'/>
           </div>
-          <div>
-            <img src='../assets/뒤로가기.png'/>
-          </div>
-          <div>
-            <img class=mainimg src = '../assets/푸르바.png'>
-          </div>
-          <h3 class="sojemok">이름</h3>
-          <form action="#" method="post">
-              <input type="text" name="username" placeholder="이름을 입력해주세요" required>
-          </form>
-          <h3 class="sojemok">전화번호</h3>
+          <img class=mainimg src = '../assets/푸르바.png'>
+          <h2>전화번호</h2>
           <form action="#" method="post">
               <input type="text" name="username" placeholder="전화번호를 입력해주세요" required>
+              <input type="submit" class="btn1" value="로그인하기">
           </form>
-          <div class="withbtncontainer">
-            <h2>인증번호</h2>
-            <button>인증번호 받기</button>
-          </div>
-          <form action="#" method="post">
-              <input type="text" name="username" placeholder="인증번호를 입력해주세요" required>
+          <form class="bottom_form">
+            <h3>회원이 아니신가요?</h3>
+            <router-link to="/cr"><input type="submit" class="btn2" value="회원가입하기"></router-link>
           </form>
-          <RouterLink to="/"><input type="submit" class="btn2" value="회원가입하기"></RouterLink>
         </div>
     </div>
   </template>
@@ -34,7 +22,7 @@
   <script>
   
   export default {
-    name: 'CreateAccount',
+    name: 'FirstIn',
     components: {
     }
   }
@@ -51,7 +39,7 @@
     height: 100vh;
     background-color: #E5E5E5;
     box-sizing: border-box;
-  }*/
+  }
   
   #battery {
     width: 20px;
@@ -83,25 +71,14 @@
     height: 640px;
     width: 360px;
   }
-  .withbtncontainer{
-    display:flex;
-    align-items: center;
-  }    
-  .withbtncontainer h2 {
-    flex-grow:1;
-    margin-right: 10px;
+             
+  .login-container h2 {
+    text-align: left;
+    margin: 50px auto 20px 20px;
     color: #1F4E79;
   }          
-  .withbtncontainer button {
-    background-color: #2EA211;
-    color: white;
-    border-style : none;
-    border-radius: 5px;
-    margin: 30px 20px 0 0;
-
-  }          
   
-  .sojemok {
+  form h3 {
     text-align: left;
     margin: 10px auto 10px 20px;
     color: black;
