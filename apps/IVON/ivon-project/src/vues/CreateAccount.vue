@@ -5,11 +5,11 @@
             <p>12:34</p>
             <img id=battery src = '../assets/battery.png'/>
           </div>
-          <div>
-            <img src='../assets/뒤로가기.png'/>
+          <div class=imgbox>
+            <img class=mainimg src = '../assets/푸르바.png'>
+            <RouterLink to='/'><img class=backimg src='../assets/뒤로가기.png'/></RouterLink>
           </div>
           <div>
-            <img class=mainimg src = '../assets/푸르바.png'>
           </div>
           <h3 class="sojemok">이름</h3>
           <form action="#" method="post">
@@ -21,12 +21,12 @@
           </form>
           <div class="withbtncontainer">
             <h2>인증번호</h2>
-            <button>인증번호 받기</button>
+            <router-link to='/main'><button>인증번호 받기</button></router-link>
           </div>
           <form action="#" method="post">
               <input type="text" name="username" placeholder="인증번호를 입력해주세요" required>
           </form>
-          <RouterLink to="/"><input type="submit" class="btn2" value="회원가입하기"></RouterLink>
+          <input type="submit" class="btn2" value="회원가입하기">
         </div>
     </div>
   </template>
@@ -97,6 +97,7 @@
     color: white;
     border-style : none;
     border-radius: 5px;
+    cursor: pointer;
     margin: 30px 20px 0 0;
 
   }          
@@ -154,9 +155,23 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  .imgbox{
+    display: block;
+    width:100%;
+    height:auto;
+  }
+  .backimg{
+    width: 30px;
+    height: 30px;
+    margin: 10px 10px 0 0;
+    float: right;
+    color: black;
+  }
   
-  .mainimg{
-    margin-top: 50px;
+  .imgbox .mainimg{
+    margin-top: 30px;
+    margin-left: 40px;
     width : max-content;
   }
   </style>
