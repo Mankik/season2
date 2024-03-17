@@ -1,0 +1,14 @@
+INSERT INTO content_type (type_name) VALUES ('image');
+INSERT INTO content_type (type_name) VALUES ('event');
+
+INSERT INTO event_type (type_name) VALUES ('전체');
+INSERT INTO event_type (type_name) VALUES ('기업/일자리');
+INSERT INTO event_type (type_name) VALUES ('소비자/경제');
+INSERT INTO event_type (type_name) VALUES ('문화/관광/체육');
+INSERT INTO event_type (type_name) VALUES ('도시/건축/부동산');
+INSERT INTO event_type (type_name) VALUES ('세금(지방세)');
+INSERT INTO event_type (type_name) VALUES ('복지');
+INSERT INTO event_type (type_name) VALUES ('교육');
+INSERT INTO event_type (type_name) VALUES ('환경/위생/수도');
+INSERT INTO event_type (type_name) VALUES ('재난/안전/민방위');
+INSERT INTO event_type (type_name) VALUES ('교통');

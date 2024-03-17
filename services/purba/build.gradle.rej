@@ -1,0 +1,16 @@
+diff a/apps/IVON/purba/build.gradle b/apps/IVON/purba/build.gradle	(rejected hunks)
+@@ -26,12 +26,14 @@
+ 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+ 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+ 	implementation 'org.springframework.boot:spring-boot-starter-web'
++    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+ 	compileOnly 'org.projectlombok:lombok'
+ 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+ 	runtimeOnly 'com.mysql:mysql-connector-j'
+ 	annotationProcessor 'org.projectlombok:lombok'
+ 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+     implementation 'mysql:mysql-connector-java:8.0.32'
++    implementation 'org.springframework.boot:spring-boot-devtools'
+ }
+ 
+ tasks.named('test') {
