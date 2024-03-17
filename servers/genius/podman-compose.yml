@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.3
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'mysqltest1'
+      MYSQL_USER: 'JY'
+      MYSQL_PASSWORD: 'tgyhuj3#'
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+  web:
+    build: .
+    command: poetry run python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app/src
+    restart: always
+
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_NAME: mysqltest1
+      DB_USER: JY
+      DB_PASSWORD: tgyhuj3#
+volumes:
+  db_data:
