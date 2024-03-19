@@ -1,28 +1,18 @@
 <template>
     <div id="app" class="backgroundContainer">
-      <div class="phoneContainer centerAlign">
+      <div class="phoneContainer">
           <div class="status-bar">
             <p>{{ currentTime }}</p>
             <img id=battery src = '../assets/battery.png'/>
           </div>
-          <img class=logoPoorba src = '../assets/푸르바.png'>
-          <h2>전화번호</h2>
-          <form action="#" method="post">
-              <input type="text" name="username" class="inputBar" placeholder="전화번호를 입력해주세요" required>
-              <input type="submit" id="color1" class="longCLickBtn" value="로그인하기">
-          </form>
-          <form class="bottomFirst">
-            <h3 class="subTitleLeft">회원이 아니신가요?</h3>
-            <router-link to="/cr"><input type="submit" class="longCLickBtn" value="회원가입하기"></router-link>
-          </form>
         </div>
     </div>
 </template>
-  
+
 <script>
-  
+/*뷰 추가시 name을 뷰 이름에 맞게 변경해서 사용 */
   export default {
-    name: 'FirstIn',
+    name: 'PhoneTemplate',
     components: {
     },
     data() {
@@ -44,7 +34,5 @@
 </script>
   
 <style>
-  @import '../css/index.css';
-
+@import '../css/index.css';
 </style>
-  
