@@ -178,7 +178,7 @@ class DraftViewSet(viewsets.ModelViewSet):
         draft.save()
 
         return Response({'message': 'Selected answer saved successfully', 'page_id': draft.id,
-                         'page_content': draft.genre})
+                        'page_content': draft.genre})
 
     @action(detail=False, methods=['post'], url_path='genre')
     def genre(self, request):
@@ -327,12 +327,12 @@ class IntroViewSet(viewsets.ModelViewSet):
         IntroViewSet.personality = request.data.get('personality')
         IntroViewSet.story = request.data.get('story')
         return Response({'message': "기본 정보 입력 완료",
-                         '기본정보':
-                             {'name': IntroViewSet.name,
-                              'gender': IntroViewSet.gender,
-                              'age': IntroViewSet.age,
-                              'personality': IntroViewSet.personality,
-                              'story': IntroViewSet.story}}, status=status.HTTP_201_CREATED)
+                        '기본정보':
+                            {'name': IntroViewSet.name,
+                            'gender': IntroViewSet.gender,
+                            'age': IntroViewSet.age,
+                            'personality': IntroViewSet.personality,
+                            'story': IntroViewSet.story}}, status=status.HTTP_201_CREATED)
 
     @action(detail=False, methods=['post'])
     def firstquestion(self, request):
@@ -360,16 +360,16 @@ class IntroViewSet(viewsets.ModelViewSet):
                 {
                     "role": "user",
                     "content": "I will try to create a fairy tale creation service."  # 동화 제작 서비스를 만들겁니다.
-                               "Please write a story about the beginning of a fairy tale in 3 sentences based on the genre of the fairy tale,"  # 동화의 장르를 바탕으로 동화의 시작에 대한 이야기를 3개의 문장으로 작성해 주세요.
-                               "Name of the main character, gender, personality, age and a must-see story. 2~3줄 정도의 짧은 이야기를 생성해주세요. 그리고 다음 이야기 진행을 위한 질문을 작성해주세요."
+                    "Please write a story about the beginning of a fairy tale in 3 sentences based on the genre of the fairy tale,"  # 동화의 장르를 바탕으로 동화의 시작에 대한 이야기를 3개의 문장으로 작성해 주세요.
+                    "Name of the main character, gender, personality, age and a must-see story. 2~3줄 정도의 짧은 이야기를 생성해주세요. 그리고 다음 이야기 진행을 위한 질문을 작성해주세요."
                     # 주인공 이름, 성별, 성격, 나이 그리고 꼭 들어갔으면 하는 이야기, 그리고 다음 동화 이야기를 위한 짧은 질문도 같이 작성해주세요.
                     # the name of the main character, gender, personality, age, and the story to enter. And please write a short question for the next story of the fairy tale.
                 },
                 {
                     "role": "user",
                     "content": f"The genre is {genre}, the main character's name is {IntroViewSet.name}, the gender is {IntroViewSet.gender}, the personality is {IntroViewSet.personality}, and he is {IntroViewSet.age} years old."
-                               f"the story you wish to enter is {IntroViewSet.story}."  # 장르는 {genre}, 주인공의 이름은 {name}, 성별은 {gender}, 성격은 {personality}, 나이는 {age}. 꼭 들어갔으면 하는 이야기는 {story}.
-                               "답변을 한글로 바꿔주세요."
+                    f"the story you wish to enter is {IntroViewSet.story}."  # 장르는 {genre}, 주인공의 이름은 {name}, 성별은 {gender}, 성격은 {personality}, 나이는 {age}. 꼭 들어갔으면 하는 이야기는 {story}.
+                    "답변을 한글로 바꿔주세요."
                 },
 
                 {"role": "system", "content": "You are a fairy tale writer for kids."},#당신은 아이들과 십대들을 위한 동화 작가입니다.
@@ -465,7 +465,10 @@ class IntroViewSet(viewsets.ModelViewSet):
             # IntroContent 업데이트
             latest_intro.IntroContent += "/n" + completion.choices[0].message.content + "/n"
             latest_intro.save()
-            return Response({'message': 'IntroContent updated successfully'}, status=status.HTTP_201_CREATED)
+            return Response({
+                'message': 'IntroContent updated successfully.',
+                '만들어진 이야기': completion.choices[0].message.content
+            }, status=status.HTTP_201_CREATED)
         else:
             return Response({'error': 'No intro instance found for the member'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -513,7 +516,10 @@ class IntroViewSet(viewsets.ModelViewSet):
             # IntroContent 업데이트
             latest_intro.IntroContent += "/n" + completion.choices[0].message.content
             latest_intro.save()
-            return Response({'message': 'IntroContent updated successfully'}, status=status.HTTP_201_CREATED)
+            return Response({
+                'message': 'IntroContent updated successfully.',
+                '만들어진 이야기': completion.choices[0].message.content
+            }, status=status.HTTP_201_CREATED)
         else:
             return Response({'error': 'No intro instance found for the member'}, status=status.HTTP_404_NOT_FOUND)
 
