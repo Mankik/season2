@@ -1,0 +1,203 @@
+  #app {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } /* 모든 vue의 공통 글꼴 */
+  
+  #ProjectName {
+    margin : 0;
+    color : #1F4E79;
+    text-decoration-line: none;
+  } /* 프로젝트 이름(상단부에 위치) */
+
+  .backgroundContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #E5E5E5;
+    box-sizing: border-box;
+  } /* 프로젝트 배경 */
+
+  #battery {
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin-left: auto;
+  } /* 배터리 모양 */
+  
+  .status-bar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #222222;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 999; 
+  } /* 상태 바(상단) */
+
+  .phoneContainer {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
+    height: 640px;
+    width: 360px;
+  } /* 모바일 디스플레이 640X360 */
+
+  .centerAlign{
+    text-align: center;
+  }
+
+  .phoneContainer h2 {
+    text-align: left;
+    margin: 50px auto 20px 20px;
+    color: #1F4E79;
+  } /* 중간크기의 제목 */
+
+  .inputBar {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #1F4E79;
+    border-radius: 5px;
+    color: #1F4E79;
+    box-sizing: border-box;
+  } /* 입력 창 */
+
+  .longCLickBtn{
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+  } /* 긴 제출 버튼 */
+
+  #color1{
+    background-color: #2E75B6;
+  }
+
+  #color2{
+    background-color: #1F4E79;
+  }
+
+  .longCLickBtn:hover {
+    background-color: #1F4E79;
+    transition : 0.9s ease
+  } /* 긴 제출 버튼 갖다대기 */
+
+  
+  .logoPoorba{
+    margin-top: 50px;
+    width : max-content;
+  } /* 푸르바 로고 */
+  .withBack .logoPoorba{
+    margin-top: 30px;
+    margin-left: 40px;
+  } /* 푸르바 로고(뒤로가기 포함) */
+  .withBack .PoorbaMove{
+    margin-top: 30px;
+    margin-left: 90px;
+  } /* 푸르바 로고 위치 조정 */
+
+  .withBack{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .backImg{
+    width: 30px;
+    height: 30px;
+    margin: 10px 10px 0 0;
+    float: right;
+    color: black;
+  } /* 뒤로가기 버튼 */
+
+  .subTitleLeft {
+    text-align: left;
+    margin: 10px auto 10px 20px;
+    color: black;
+  } /* 소제목(왼쪽 정렬) */
+  
+  
+  .bottomFirst{
+    margin-top:100px;
+    align-items: flex-end;
+  } /* 첫화면 아래쪽 폼 */
+  
+  
+  /* 인증번호 폼 */
+  .authContainer{
+    display:flex;
+    align-items: center;
+  }    
+  .authContainer h2 {
+    flex-grow:1;
+    margin-right: 10px;
+    color: #1F4E79;
+  }          
+  .authContainer button {
+    background-color: #2EA211;
+    color: white;
+    border-style : none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 30px 20px 0 0;
+  }          
+
+
+  /* 메인 화면 버튼 6개 */
+  .btnBundles{
+    margin-top: 20px;
+    margin-left: 25px;
+  }
+  .mainBtn{
+    margin-left: 30px;
+    width:110px;
+    height:110px;
+    background-color: #1F4E79;
+    position:relative;
+    border-style: none;
+    border-radius: 10px;
+  }
+  .mainIcon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  .mainTxt {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap; /* 줄바꿈 제어 */
+  }
+
+  /* 카메라 화면 */
+  .cameraDisplay {
+    height: 480px;
+    width: 360px;
+  }
+  .captureBtn {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+  }

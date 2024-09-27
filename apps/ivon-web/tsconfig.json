@@ -1,0 +1,5 @@
+{
+  "extends": "tsconfig-custom/tsconfig.vue.json",
+  "include": ["src"],
+  "references": [{ "path": "tsconfig.node.json" }]
+}
